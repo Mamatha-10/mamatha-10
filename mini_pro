@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -100,7 +100,7 @@
 }
 
         .image-container img {
-    width: 400px; /* Adjust width as needed */
+    width: 350px; /* Adjust width as needed */
     height: auto;
     border-radius: 20px; /* Smooth edges */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Adds a slight shadow */
@@ -159,9 +159,9 @@ RISHI MS INSTITUTE OF ENGINEERING AND TECHNOLOGY FOR WOMEN </h1>
 
     
     <div class="image-container">
-        <img src="https://theacademicinsights.com/wp-content/uploads/2022/07/Rishi-MS-Institute.jpg" width="100">
-       <img src="https://images.shiksha.com/mediadata/images/1684409698phpXnTleK.jpeg"  width="60" >
-<img src="https://www.collegebatch.com/static/clg-gallery/rishi-m-s-institute-of-engineering-technology-for-women-hyderabad-321410.jpg" width="50">     
+        <img src="https://theacademicinsights.com/wp-content/uploads/2022/07/Rishi-MS-Institute.jpg" width="50" height="50">
+       <img src="https://images.shiksha.com/mediadata/images/1684409698phpXnTleK.jpeg"  width="50" height="50" >
+<img src="https://www.collegebatch.com/static/clg-gallery/rishi-m-s-institute-of-engineering-technology-for-women-hyderabad-321410.jpg" width="10" height="10">     
    <img src="https://img.freepik.com/premium-photo/abstract-blue-light-gradient-blurred-colorful-gradient-background_558873-57843.jpg?semt=ais_hybrid&w=740" width="40">
     </div>
 
