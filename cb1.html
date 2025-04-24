@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,7 +7,6 @@
     <title>RISHI Chatbot</title>
     <link rel="shortcut icon" href="https://1.bp.blogspot.com/-lBRQOrI7LF8/X6UYGpNHMQI/AAAAAAAAIqE/QzW80CbRLF8EHlBed8GJdDnf-rYjRSafwCLcBGAsYHQ/s0/a2%2Bdownload.jpg" type="image/x-icon">
     <style>
-        /* Styling code remains the same */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -45,7 +44,7 @@
 
         .chatbox {
             position: fixed;
-            bottom: 20px;
+            bottom: 80px;
             right: 20px;
             width: 350px;
             background: white;
@@ -53,6 +52,8 @@
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             overflow: hidden;
+            display: none; /* Hide chatbox by default */
+            z-index: 1000;
         }
 
         .chat-header {
@@ -75,7 +76,7 @@
             padding: 10px;
             display: flex;
         }
- 
+
         .chat-input input {
             width: 80%;
             padding: 5px;
@@ -92,50 +93,69 @@
         }
 
         .image-container {
-    display: flex;
-    justify-content: center; /* Centers the images horizontally */
-    align-items: center; /* Centers vertically */
-    margin: 40px; /* Adds spacing between images */
-    gap: 40px;
-}
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px;
+            gap: 40px;
+        }
 
         .image-container img {
-    width: 350px; /* Adjust width as needed */
-    height: auto;
-    border-radius: 20px; /* Smooth edges */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Adds a slight shadow */
-}
+            width: 350px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
         .center-image {
-    transform: scale(1.1); /* Slightly enlarges the center image */
-}
-        
+            transform: scale(1.1);
+        }
+
         .watermark {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            opacity: 0.2; 
-            z-index: -1; 
+            opacity: 0.2;
+            z-index: -1;
         }
 
         .watermark img {
-            width: 100px; 
+            width: 100px;
             height: auto;
-            background:no-repeat;
+            background: no-repeat;
         }
 
-    .watermark:hover {
-               opacity: 1.0;
+        .watermark:hover {
+            opacity: 1.0;
         }
+
+        #chat-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
     </style>
 </head>
 
 <body>
 
     <div class="header">
-        <h1> <img src="https://www.targetadmission.com/img/logos/229693358.png"  alt="Logo" align="left" width="100px" height="100px">
-RISHI MS INSTITUTE OF ENGINEERING AND TECHNOLOGY FOR WOMEN </h1>
+        <h1>
+            <img src="https://www.targetadmission.com/img/logos/229693358.png" alt="Logo" align="left" width="100px" height="100px">
+            RISHI MS INSTITUTE OF ENGINEERING AND TECHNOLOGY FOR WOMEN
+        </h1>
         <marquee>WELCOME TO RISHI M.S INSTITUTE OF ENGINEERING AND TECHNOLOGY FOR WOMEN</marquee>
     </div>
 
@@ -151,21 +171,19 @@ RISHI MS INSTITUTE OF ENGINEERING AND TECHNOLOGY FOR WOMEN </h1>
         <p>We offer a variety of courses and programs to help you achieve your goals.</p>
     </div>
 
-    
-    <div class="watermark">© Rishi MS Engineering College</div> 
-	<div class="watermark">
-    <img src="https://www.targetadmission.com/img/logos/229693358.png" alt="Rishi MS Institute Logo">
+    <div class="watermark">© Rishi MS Engineering College</div>
+    <div class="watermark">
+        <img src="https://www.targetadmission.com/img/logos/229693358.png" alt="Rishi MS Institute Logo">
     </div>
 
-    
     <div class="image-container">
-        <img src="https://theacademicinsights.com/wp-content/uploads/2022/07/Rishi-MS-Institute.jpg" width="50" height="50">
-       <img src="https://images.shiksha.com/mediadata/images/1684409698phpXnTleK.jpeg"  width="50" height="50" >
-<img src="https://www.collegebatch.com/static/clg-gallery/rishi-m-s-institute-of-engineering-technology-for-women-hyderabad-321410.jpg" width="50" height="50">     
-   <img src="https://img.freepik.com/premium-photo/abstract-blue-light-gradient-blurred-colorful-gradient-background_558873-57843.jpg?semt=ais_hybrid&w=740" width="40">
+        <img src="https://theacademicinsights.com/wp-content/uploads/2022/07/Rishi-MS-Institute.jpg">
+        <img src="https://images.shiksha.com/mediadata/images/1684409698phpXnTleK.jpeg">
+        <img src="https://www.collegebatch.com/static/clg-gallery/rishi-m-s-institute-of-engineering-technology-for-women-hyderabad-321410.jpg">
     </div>
 
-    <div class="chatbox">
+    <!-- Chatbot Box -->
+    <div class="chatbox" id="chatbox">
         <div class="chat-header">RISHI</div>
         <div class="chat-body" id="chat-body">
             <p><strong>Rishi:</strong> Hello! How can I assist you today?</p>
@@ -174,23 +192,19 @@ RISHI MS INSTITUTE OF ENGINEERING AND TECHNOLOGY FOR WOMEN </h1>
             <input type="text" id="user-input" placeholder="Chat with RISHI...">
             <button onclick="sendMessage()">Send</button>
         </div>
+    </div>
 
-    <div class="watermark">© Rishi MS Engineering College</div> 
-	<div class="watermark">
-    <img src="https://www.targetadmission.com/img/logos/229693358.png" alt="Rishi MS Institute Logo">
-    </div>
-    </div>
+    <!-- Chat Toggle Button -->
+    <button id="chat-toggle" onclick="toggleChatbox()">💬 Chat with RISHI</button>
 
     <script>
         async function getResponse(userInput) {
             try {
-                // Use relative file path for JSON file
-                const response = await fetch('./responses.json'); // Ensure this file is served from the same directory
+                const response = await fetch('./responses.json');
                 if (!response.ok) {
-                    throw new Error(HTTP error! status: ${response.status});
+                    throw new Error("HTTP error: " + response.status);
                 }
                 const data = await response.json();
-
                 let reply = data[userInput.toLowerCase()] || "I'm sorry, I don't understand. Try asking about admissions, courses, or placements.";
                 displayMessage("Rishi", reply);
             } catch (error) {
@@ -202,21 +216,24 @@ RISHI MS INSTITUTE OF ENGINEERING AND TECHNOLOGY FOR WOMEN </h1>
         function displayMessage(sender, message) {
             const chatBody = document.getElementById("chat-body");
             const msgDiv = document.createElement("p");
-            msgDiv.innerHTML = <strong>${sender}:</strong> ${message};
+            msgDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
             chatBody.appendChild(msgDiv);
-            chatBody.scrollTop = chatBody.scrollHeight; // Auto-scroll
+            chatBody.scrollTop = chatBody.scrollHeight;
         }
 
         function sendMessage() {
             const inputField = document.getElementById("user-input");
             const userMessage = inputField.value.trim();
-
             if (userMessage) {
                 displayMessage("You", userMessage);
                 getResponse(userMessage);
             }
-
             inputField.value = "";
+        }
+
+        function toggleChatbox() {
+            const chatbox = document.getElementById("chatbox");
+            chatbox.style.display = (chatbox.style.display === "block") ? "none" : "block";
         }
     </script>
 
